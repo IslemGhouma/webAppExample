@@ -1,22 +1,22 @@
-pipeline {    
-         
+pipeline {
+
 	agent any
     stages {
         stage("Delete Workspace"){
-            steps {                 
+            steps {
                 cleanWs deleteDirs: true
 				        checkout scm
             }
         }
-		
-        stage("Build Application"){           
+
+        stage("Build Application"){
           steps {
             bat '''
-            mvn clean package 
+            mvn clean package
             '''
-          }     
+          }
         }
-         
+
     }
     post {
             always {
